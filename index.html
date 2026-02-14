@@ -15,48 +15,105 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            padding: 20px;
         }
 
-        .container {
+        /* Navigation Bar */
+        .navbar {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
             max-width: 1400px;
             margin: 0 auto;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            height: 60px;
+            overflow-x: auto;
+            overflow-y: hidden;
         }
 
-        .header {
+        .nav-brand {
+            font-size: 20px;
+            font-weight: bold;
+            color: #667eea;
+            margin-right: 30px;
+            white-space: nowrap;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 5px;
+            flex: 1;
+        }
+
+        .nav-link {
+            padding: 8px 16px;
+            background: transparent;
+            border: none;
+            color: #666;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        .nav-link:hover {
+            background: #f0f0f0;
+            color: #667eea;
+        }
+
+        .nav-link.active {
+            background: #667eea;
+            color: white;
+        }
+
+        /* Page Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        .page-header {
             background: white;
             padding: 25px;
             border-radius: 15px;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
-        .header h1 {
+        .page-header h1 {
             color: #667eea;
             margin-bottom: 5px;
+            font-size: 28px;
         }
 
-        .header p {
+        .page-header p {
             color: #666;
         }
 
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 20px;
-            margin-bottom: 20px;
-        }
-
+        /* Card Styles */
         .card {
             background: white;
             border-radius: 15px;
             padding: 25px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: transform 0.2s;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
+            margin-bottom: 20px;
         }
 
         .card-header {
@@ -68,7 +125,7 @@
         }
 
         .card-icon {
-            font-size: 28px;
+            font-size: 24px;
             margin-right: 12px;
         }
 
@@ -78,6 +135,7 @@
             color: #333;
         }
 
+        /* Form Elements */
         .input-group {
             margin-bottom: 15px;
         }
@@ -89,7 +147,9 @@
             font-weight: 500;
         }
 
-        .input-group input, .input-group select, .input-group textarea {
+        .input-group input, 
+        .input-group select, 
+        .input-group textarea {
             width: 100%;
             padding: 10px;
             border: 2px solid #e0e0e0;
@@ -98,7 +158,9 @@
             transition: border-color 0.3s;
         }
 
-        .input-group input:focus, .input-group select:focus, .input-group textarea:focus {
+        .input-group input:focus, 
+        .input-group select:focus, 
+        .input-group textarea:focus {
             outline: none;
             border-color: #667eea;
         }
@@ -129,6 +191,17 @@
             background: #c0392b;
         }
 
+        button.edit-btn {
+            background: #3498db;
+            padding: 5px 10px;
+            font-size: 12px;
+        }
+
+        button.edit-btn:hover {
+            background: #2980b9;
+        }
+
+        /* GPA Display */
         .gpa-display {
             text-align: center;
             padding: 30px;
@@ -144,7 +217,10 @@
             margin: 10px 0;
         }
 
-        .course-item, .assignment-item, .schedule-item {
+        /* Item Cards */
+        .course-item, 
+        .assignment-item, 
+        .schedule-item {
             background: #f8f9fa;
             padding: 12px;
             border-radius: 8px;
@@ -152,65 +228,6 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-        }
-
-        .timer-display {
-            text-align: center;
-            font-size: 48px;
-            font-weight: bold;
-            color: #667eea;
-            margin: 20px 0;
-            font-family: 'Courier New', monospace;
-        }
-
-        .timer-controls {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-            margin-top: 15px;
-        }
-
-        .quick-links {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            margin-top: 15px;
-        }
-
-        .quick-link {
-            background: #f8f9fa;
-            padding: 15px;
-            border-radius: 8px;
-            text-align: center;
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            transition: background 0.3s;
-        }
-
-        .quick-link:hover {
-            background: #e9ecef;
-        }
-
-        .formula-card {
-            background: #f8f9fa;
-            padding: 10px;
-            border-radius: 8px;
-            margin-bottom: 10px;
-        }
-
-        .formula-card strong {
-            color: #667eea;
-        }
-
-        .notes-area {
-            width: 100%;
-            min-height: 150px;
-            padding: 12px;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            resize: vertical;
-            font-family: inherit;
         }
 
         .priority-high {
@@ -230,16 +247,64 @@
             text-decoration: line-through;
         }
 
+        .alarm-badge {
+            background: #e74c3c;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 11px;
+            margin-left: 5px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .checkbox-group label {
+            margin: 0;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        /* Timer */
+        .timer-display {
+            text-align: center;
+            font-size: 64px;
+            font-weight: bold;
+            color: #667eea;
+            margin: 30px 0;
+            font-family: 'Courier New', monospace;
+        }
+
+        .timer-controls {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 15px;
-            margin-top: 15px;
+            margin-top: 20px;
         }
 
         .stat-box {
             background: #f8f9fa;
-            padding: 15px;
+            padding: 20px;
             border-radius: 8px;
             text-align: center;
         }
@@ -256,6 +321,7 @@
             margin-top: 5px;
         }
 
+        /* Formulas */
         .category-tabs {
             display: flex;
             flex-wrap: wrap;
@@ -295,35 +361,16 @@
             display: block;
         }
 
-        .checkbox-group {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-top: 10px;
-            padding: 10px;
+        .formula-card {
             background: #f8f9fa;
+            padding: 10px;
             border-radius: 8px;
+            margin-bottom: 10px;
+            position: relative;
         }
 
-        .checkbox-group input[type="checkbox"] {
-            width: 20px;
-            height: 20px;
-            cursor: pointer;
-        }
-
-        .checkbox-group label {
-            margin: 0;
-            cursor: pointer;
-            user-select: none;
-        }
-
-        .alarm-badge {
-            background: #e74c3c;
-            color: white;
-            padding: 2px 8px;
-            border-radius: 12px;
-            font-size: 11px;
-            margin-left: 5px;
+        .formula-card strong {
+            color: #667eea;
         }
 
         .edit-formula-btn {
@@ -342,25 +389,37 @@
             background: transparent;
         }
 
+        /* Notes */
         .note-card {
             background: #f8f9fa;
-            padding: 15px;
             border-radius: 8px;
             margin-bottom: 15px;
             border-left: 4px solid #667eea;
+            overflow: hidden;
         }
 
         .note-card-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 10px;
+            padding: 15px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .note-card-header:hover {
+            background: #e9ecef;
+        }
+
+        .note-card-title-section {
+            flex: 1;
         }
 
         .note-card-title {
             font-weight: 600;
             color: #333;
             font-size: 16px;
+            margin-bottom: 3px;
         }
 
         .note-card-date {
@@ -368,10 +427,34 @@
             font-size: 12px;
         }
 
+        .note-expand-icon {
+            font-size: 20px;
+            color: #667eea;
+            transition: transform 0.3s;
+        }
+
+        .note-card.expanded .note-expand-icon {
+            transform: rotate(180deg);
+        }
+
         .note-card-content {
+            padding: 0 15px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .note-card.expanded .note-card-content {
+            max-height: 500px;
+            padding: 15px;
+            padding-top: 0;
+        }
+
+        .note-card-text {
             color: #555;
             white-space: pre-wrap;
             word-wrap: break-word;
+            margin-bottom: 10px;
         }
 
         .note-actions {
@@ -385,9 +468,111 @@
             font-size: 12px;
         }
 
+        .notes-area {
+            width: 100%;
+            min-height: 150px;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            resize: vertical;
+            font-family: inherit;
+        }
+
+        /* Quick Links */
+        .quick-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+        }
+
+        .quick-link {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+
+        .quick-link:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        /* Modal for custom formula category */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .modal-close {
+            float: right;
+            font-size: 28px;
+            cursor: pointer;
+            color: #999;
+        }
+
+        .modal-close:hover {
+            color: #333;
+        }
+
+        /* Mobile Responsive */
         @media (max-width: 768px) {
-            .grid {
-                grid-template-columns: 1fr;
+            .nav-brand {
+                font-size: 16px;
+                margin-right: 15px;
+            }
+
+            .nav-link {
+                font-size: 12px;
+                padding: 6px 12px;
+            }
+
+            .page-header h1 {
+                font-size: 22px;
+            }
+
+            .timer-display {
+                font-size: 48px;
+            }
+
+            .gpa-number {
+                font-size: 36px;
+            }
+
+            .stat-number {
+                font-size: 24px;
             }
 
             .tab-btn {
@@ -395,35 +580,35 @@
                 padding: 8px 10px;
                 font-size: 12px;
             }
-
-            .gpa-number {
-                font-size: 36px;
-            }
-
-            .timer-display {
-                font-size: 36px;
-            }
-
-            .stat-number {
-                font-size: 24px;
-            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>🎓 Engineering Student Dashboard</h1>
-            <p>Your complete academic command center</p>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">🎓 Eng Dashboard</div>
+            <div class="nav-links">
+                <button class="nav-link active" onclick="showPage('gpa')">📊 GPA</button>
+                <button class="nav-link" onclick="showPage('assignments')">📝 Assignments</button>
+                <button class="nav-link" onclick="showPage('timer')">⏱️ Timer</button>
+                <button class="nav-link" onclick="showPage('schedule')">📅 Schedule</button>
+                <button class="nav-link" onclick="showPage('formulas')">🧮 Formulas</button>
+                <button class="nav-link" onclick="showPage('notes')">📋 Notes</button>
+                <button class="nav-link" onclick="showPage('links')">🔗 Links</button>
+            </div>
         </div>
+    </nav>
 
-        <div class="grid">
-            <!-- GPA Calculator -->
+    <div class="container">
+        <!-- GPA Calculator Page -->
+        <div id="gpa" class="page active">
+            <div class="page-header">
+                <h1>📊 GPA Calculator</h1>
+                <p>Track your courses and calculate your GPA</p>
+            </div>
+
             <div class="card">
-                <div class="card-header">
-                    <span class="card-icon">📊</span>
-                    <h2 class="card-title">GPA Calculator</h2>
-                </div>
                 <div class="input-group">
                     <label>Course Name</label>
                     <input type="text" id="courseName" placeholder="e.g., Thermodynamics">
@@ -456,13 +641,16 @@
                     <div>Total Credits: <span id="totalCredits">0</span></div>
                 </div>
             </div>
+        </div>
 
-            <!-- Assignment Tracker -->
+        <!-- Assignments Page -->
+        <div id="assignments" class="page">
+            <div class="page-header">
+                <h1>📝 Assignment Tracker</h1>
+                <p>Keep track of your deadlines and priorities</p>
+            </div>
+
             <div class="card">
-                <div class="card-header">
-                    <span class="card-icon">📝</span>
-                    <h2 class="card-title">Assignment Tracker</h2>
-                </div>
                 <div class="input-group">
                     <label>Assignment Name</label>
                     <input type="text" id="assignmentName" placeholder="e.g., Fluid Mechanics Lab Report">
@@ -490,18 +678,21 @@
                 <button onclick="addAssignment()">Add Assignment</button>
                 <div id="assignmentList" style="margin-top: 20px;"></div>
             </div>
+        </div>
 
-            <!-- Study Timer (Pomodoro) -->
+        <!-- Timer Page -->
+        <div id="timer" class="page">
+            <div class="page-header">
+                <h1>⏱️ Study Timer</h1>
+                <p>Pomodoro technique to boost productivity</p>
+            </div>
+
             <div class="card">
-                <div class="card-header">
-                    <span class="card-icon">⏱️</span>
-                    <h2 class="card-title">Study Timer</h2>
-                </div>
                 <div class="timer-display" id="timerDisplay">25:00</div>
                 <div class="timer-controls">
-                    <button onclick="startTimer()">Start</button>
-                    <button onclick="pauseTimer()">Pause</button>
-                    <button onclick="resetTimer()">Reset</button>
+                    <button onclick="startTimer()">▶️ Start</button>
+                    <button onclick="pauseTimer()">⏸️ Pause</button>
+                    <button onclick="resetTimer()">🔄 Reset</button>
                 </div>
                 <div class="input-group" style="margin-top: 20px;">
                     <label>Session Type</label>
@@ -522,13 +713,16 @@
                     </div>
                 </div>
             </div>
+        </div>
 
-            <!-- Weekly Schedule -->
+        <!-- Schedule Page -->
+        <div id="schedule" class="page">
+            <div class="page-header">
+                <h1>📅 Weekly Schedule</h1>
+                <p>Organize your weekly classes and events</p>
+            </div>
+
             <div class="card">
-                <div class="card-header">
-                    <span class="card-icon">📅</span>
-                    <h2 class="card-title">Weekly Schedule</h2>
-                </div>
                 <div class="input-group">
                     <label>Class/Event</label>
                     <input type="text" id="scheduleName" placeholder="e.g., Calculus III">
@@ -556,211 +750,72 @@
                 <button onclick="addScheduleItem()">Add to Schedule</button>
                 <div id="scheduleList" style="margin-top: 20px;"></div>
             </div>
+        </div>
 
-            <!-- Quick Reference Formulas -->
+        <!-- Formulas Page -->
+        <div id="formulas" class="page">
+            <div class="page-header">
+                <h1>🧮 Quick Reference Formulas</h1>
+                <p>Essential engineering formulas at your fingertips</p>
+            </div>
+
             <div class="card">
-                <div class="card-header">
-                    <span class="card-icon">🧮</span>
-                    <h2 class="card-title">Quick Reference</h2>
-                </div>
-                
                 <div class="category-tabs">
-                    <button class="tab-btn active" onclick="showCategory('electricity')">⚡ Electricity</button>
-                    <button class="tab-btn" onclick="showCategory('motion')">🚀 Motion</button>
-                    <button class="tab-btn" onclick="showCategory('energy')">💡 Energy</button>
-                    <button class="tab-btn" onclick="showCategory('fluids')">💧 Fluids</button>
-                    <button class="tab-btn" onclick="showCategory('materials')">🔧 Materials</button>
-                    <button class="tab-btn" onclick="showCategory('thermo')">🔥 Thermo</button>
-                    <button class="tab-btn" onclick="showCategory('custom')">➕ Custom</button>
+                    <button class="tab-btn active" onclick="showFormulaCategory('electricity')">⚡ Electricity</button>
+                    <button class="tab-btn" onclick="showFormulaCategory('motion')">🚀 Motion</button>
+                    <button class="tab-btn" onclick="showFormulaCategory('energy')">💡 Energy</button>
+                    <button class="tab-btn" onclick="showFormulaCategory('fluids')">💧 Fluids</button>
+                    <button class="tab-btn" onclick="showFormulaCategory('materials')">🔧 Materials</button>
+                    <button class="tab-btn" onclick="showFormulaCategory('thermo')">🔥 Thermo</button>
+                    <button class="tab-btn" onclick="showFormulaCategory('custom')">➕ Custom</button>
                 </div>
 
-                <div id="electricity" class="formula-category active">
-                    <div class="formula-card">
-                        <strong>Ohm's Law:</strong> V = IR
-                        <button class="edit-formula-btn" onclick="editFormula('electricity', 0)">✏️</button>
-                    </div>
-                    <div class="formula-card">
-                        <strong>Power:</strong> P = IV = V²/R = I²R
-                        <button class="edit-formula-btn" onclick="editFormula('electricity', 1)">✏️</button>
-                    </div>
-                    <div class="formula-card">
-                        <strong>Coulomb's Law:</strong> F = k(q₁q₂)/r²
-                        <button class="edit-formula-btn" onclick="editFormula('electricity', 2)">✏️</button>
-                    </div>
-                    <div class="formula-card">
-                        <strong>Capacitance:</strong> C = Q/V
-                        <button class="edit-formula-btn" onclick="editFormula('electricity', 3)">✏️</button>
-                    </div>
-                    <div class="formula-card">
-                        <strong>Resistance (series):</strong> R_total = R₁ + R₂ + R₃
-                        <button class="edit-formula-btn" onclick="editFormula('electricity', 4)">✏️</button>
-                    </div>
-                    <div class="formula-card">
-                        <strong>Resistance (parallel):</strong> 1/R_total = 1/R₁ + 1/R₂ + 1/R₃
-                        <button class="edit-formula-btn" onclick="editFormula('electricity', 5)">✏️</button>
-                    </div>
-                </div>
-
-                <div id="motion" class="formula-category">
-                    <div class="formula-card">
-                        <strong>Newton's 2nd Law:</strong> F = ma
-                        <button class="edit-formula-btn" onclick="editFormula('motion', 0)">✏️</button>
-                    </div>
-                    <div class="formula-card">
-                        <strong>Velocity:</strong> v = v₀ + at
-                        <button class="edit-formula-btn" onclick="editFormula('motion', 1)">✏️</button>
-                    </div>
-                    <div class="formula-card">
-                        <strong>Position:</strong> x = x₀ + v₀t + ½at²
-                        <button class="edit-formula-btn" onclick="editFormula('motion', 2)">✏️</button>
-                    </div>
-                    <div class="formula-card">
-                        <strong>Momentum:</strong> p = mv
-                        <button class="edit-formula-btn" onclick="editFormula('motion', 3)">✏️</button>
-                    </div>
-                    <div class="formula-card">
-                        <strong>Impulse:</strong> J = FΔt = Δp
-                        <button class="edit-formula-btn" onclick="editFormula('motion', 4)">✏️</button>
-                    </div>
-                    <div class="formula-card">
-                        <strong>Centripetal Force:</strong> F = mv²/r
-                        <button class="edit-formula-btn" onclick="editFormula('motion', 5)">✏️</button>
-                    </div>
-                    <div class="formula-card">
-                        <strong>Angular Velocity:</strong> ω = θ/t
-                        <button class="edit-formula-btn" onclick="editFormula('motion', 6)">✏️</button>
-                    </div>
-                </div>
-
-                <div id="energy" class="formula-category">
-                    <div class="formula-card">
-                        <strong>Kinetic Energy:</strong> KE = ½mv²
-                        <button class="edit-formula-btn" onclick="editFormula('energy', 0)">✏️</button>
-                    </div>
-                    <div class="formula-card">
-                        <strong>Potential Energy:</strong> PE = mgh
-                        <button class="edit-formula-btn" onclick="editFormula('energy', 1)">✏️</button>
-                    </div>
-                    <div class="formula-card">
-                        <strong>Work:</strong> W = F·d·cos(θ)
-                        <button class="edit-formula-btn" onclick="editFormula('energy', 2)">✏️</button>
-                    </div>
-                    <div class="formula-card">
-                        <strong>Power:</strong> P = W/t = F·v
-                        <button class="edit-formula-btn" onclick="editFormula('energy', 3)">✏️</button>
-                    </div>
-                    <div class="formula-card">
-                        <strong>Elastic Potential:</strong> PE = ½kx²
-                        <button class="edit-formula-btn" onclick="editFormula('energy', 4)">✏️</button>
-                    </div>
-                    <div class="formula-card">
-                        <strong>Conservation:</strong> KE₁ + PE₁ = KE₂ + PE₂
-                        <button class="edit-formula-btn" onclick="editFormula('energy', 5)">✏️</button>
-                    </div>
-                </div>
-
-                <div id="fluids" class="formula-category">
-                    <div class="formula-card">
-                        <strong>Bernoulli's Equation:</strong> P + ½ρv² + ρgh = constant
-                        <button class="edit-formula-btn" onclick="editFormula('fluids', 0)">✏️</button>
-                    </div>
-                    <div class="formula-card">
-                        <strong>Continuity:</strong> A₁v₁ = A₂v₂
-                        <button class="edit-formula-btn" onclick="editFormula('fluids', 1)">✏️</button>
-                    </div>
-                    <div class="formula-card">
-                        <strong>Pressure:</strong> P = F/A
-                        <button class="edit-formula-btn" onclick="editFormula('fluids', 2)">✏️</button>
-                    </div>
-                    <div class="formula-card">
-                        <strong>Hydrostatic Pressure:</strong> P = ρgh
-                        <button class="edit-formula-btn" onclick="editFormula('fluids', 3)">✏️</button>
-                    </div>
-                    <div class="formula-card">
-                        <strong>Buoyancy:</strong> F_b = ρ_fluid·V_displaced·g
-                        <button class="edit-formula-btn" onclick="editFormula('fluids', 4)">✏️</button>
-                    </div>
-                    <div class="formula-card">
-                        <strong>Flow Rate:</strong> Q = A·v
-                        <button class="edit-formula-btn" onclick="editFormula('fluids', 5)">✏️</button>
-                    </div>
-                </div>
-
-                <div id="materials" class="formula-category">
-                    <div class="formula-card">
-                        <strong>Stress:</strong> σ = F/A
-                        <button class="edit-formula-btn" onclick="editFormula('materials', 0)">✏️</button>
-                    </div>
-                    <div class="formula-card">
-                        <strong>Strain:</strong> ε = ΔL/L₀
-                        <button class="edit-formula-btn" onclick="editFormula('materials', 1)">✏️</button>
-                    </div>
-                    <div class="formula-card">
-                        <strong>Young's Modulus:</strong> E = σ/ε
-                        <button class="edit-formula-btn" onclick="editFormula('materials', 2)">✏️</button>
-                    </div>
-                    <div class="formula-card">
-                        <strong>Shear Stress:</strong> τ = F/A
-                        <button class="edit-formula-btn" onclick="editFormula('materials', 3)">✏️</button>
-                    </div>
-                    <div class="formula-card">
-                        <strong>Hooke's Law:</strong> F = kx
-                        <button class="edit-formula-btn" onclick="editFormula('materials', 4)">✏️</button>
-                    </div>
-                    <div class="formula-card">
-                        <strong>Moment of Inertia:</strong> I = ∫r²dA
-                        <button class="edit-formula-btn" onclick="editFormula('materials', 5)">✏️</button>
-                    </div>
-                </div>
-
-                <div id="thermo" class="formula-category">
-                    <div class="formula-card">
-                        <strong>Ideal Gas Law:</strong> PV = nRT
-                        <button class="edit-formula-btn" onclick="editFormula('thermo', 0)">✏️</button>
-                    </div>
-                    <div class="formula-card">
-                        <strong>1st Law of Thermo:</strong> ΔU = Q - W
-                        <button class="edit-formula-btn" onclick="editFormula('thermo', 1)">✏️</button>
-                    </div>
-                    <div class="formula-card">
-                        <strong>Heat Transfer:</strong> Q = mcΔT
-                        <button class="edit-formula-btn" onclick="editFormula('thermo', 2)">✏️</button>
-                    </div>
-                    <div class="formula-card">
-                        <strong>Thermal Expansion:</strong> ΔL = αL₀ΔT
-                        <button class="edit-formula-btn" onclick="editFormula('thermo', 3)">✏️</button>
-                    </div>
-                    <div class="formula-card">
-                        <strong>Efficiency:</strong> η = W_out/Q_in
-                        <button class="edit-formula-btn" onclick="editFormula('thermo', 4)">✏️</button>
-                    </div>
-                    <div class="formula-card">
-                        <strong>Entropy:</strong> ΔS = Q/T
-                        <button class="edit-formula-btn" onclick="editFormula('thermo', 5)">✏️</button>
-                    </div>
-                </div>
+                <div id="electricity" class="formula-category active" data-category="electricity"></div>
+                <div id="motion" class="formula-category" data-category="motion"></div>
+                <div id="energy" class="formula-category" data-category="energy"></div>
+                <div id="fluids" class="formula-category" data-category="fluids"></div>
+                <div id="materials" class="formula-category" data-category="materials"></div>
+                <div id="thermo" class="formula-category" data-category="thermo"></div>
 
                 <div id="custom" class="formula-category">
                     <div class="input-group">
                         <label>Formula Name</label>
-                        <input type="text" id="customFormulaName" placeholder="e.g., My Custom Formula">
+                        <input type="text" id="customFormulaName" placeholder="e.g., Reynolds Number">
                     </div>
                     <div class="input-group">
                         <label>Formula</label>
-                        <input type="text" id="customFormulaText" placeholder="e.g., F = ma²">
+                        <input type="text" id="customFormulaText" placeholder="e.g., Re = ρvD/μ">
+                    </div>
+                    <div class="input-group">
+                        <label>Category</label>
+                        <select id="customFormulaCategory">
+                            <option value="new">➕ Create New Category</option>
+                            <option value="electricity">⚡ Electricity</option>
+                            <option value="motion">🚀 Motion</option>
+                            <option value="energy">💡 Energy</option>
+                            <option value="fluids">💧 Fluids</option>
+                            <option value="materials">🔧 Materials</option>
+                            <option value="thermo">🔥 Thermo</option>
+                        </select>
+                    </div>
+                    <div class="input-group" id="newCategoryGroup" style="display: none;">
+                        <label>New Category Name</label>
+                        <input type="text" id="newCategoryName" placeholder="e.g., Aerodynamics">
                     </div>
                     <button onclick="addCustomFormula()">Add Custom Formula</button>
-                    <div id="customFormulaList" style="margin-top: 20px;"></div>
+                    <div id="customCategoriesList" style="margin-top: 20px;"></div>
                 </div>
             </div>
+        </div>
 
-            <!-- Quick Notes -->
+        <!-- Notes Page -->
+        <div id="notes" class="page">
+            <div class="page-header">
+                <h1>📋 Notes</h1>
+                <p>Organize your study notes and reminders</p>
+            </div>
+
             <div class="card">
-                <div class="card-header">
-                    <span class="card-icon">📋</span>
-                    <h2 class="card-title">Notes</h2>
-                </div>
-                
                 <div class="input-group">
                     <label>Note Title</label>
                     <input type="text" id="noteTitle" placeholder="e.g., Exam Prep">
@@ -771,15 +826,18 @@
                 </div>
                 <button onclick="addNote()">Save Note</button>
                 
-                <div id="notesList" style="margin-top: 20px;"></div>
+                <div id="notesList" style="margin-top: 30px;"></div>
+            </div>
+        </div>
+
+        <!-- Links Page -->
+        <div id="links" class="page">
+            <div class="page-header">
+                <h1>🔗 Quick Links</h1>
+                <p>Essential tools and resources</p>
             </div>
 
-            <!-- Useful Links -->
             <div class="card">
-                <div class="card-header">
-                    <span class="card-icon">🔗</span>
-                    <h2 class="card-title">Quick Links</h2>
-                </div>
                 <div class="quick-links">
                     <a href="https://www.wolframalpha.com/" target="_blank" class="quick-link">🧮 WolframAlpha</a>
                     <a href="https://www.desmos.com/calculator" target="_blank" class="quick-link">📈 Desmos</a>
@@ -789,6 +847,10 @@
                     <a href="https://www.coursera.org/" target="_blank" class="quick-link">📚 Coursera</a>
                     <a href="https://github.com/" target="_blank" class="quick-link">💻 GitHub</a>
                     <a href="https://stackoverflow.com/" target="_blank" class="quick-link">❓ Stack Overflow</a>
+                    <a href="https://www.mit.edu/~anugrah/MITHandbook2021-22.pdf" target="_blank" class="quick-link">📖 MIT Handbook</a>
+                    <a href="https://www.engineeringtoolbox.com/" target="_blank" class="quick-link">🔧 Eng Toolbox</a>
+                    <a href="https://www.youtube.com/@3blue1brown" target="_blank" class="quick-link">📺 3Blue1Brown</a>
+                    <a href="https://ocw.mit.edu/" target="_blank" class="quick-link">🏛️ MIT OCW</a>
                 </div>
             </div>
         </div>
@@ -805,9 +867,31 @@
                 return true;
             } catch(e) {
                 console.error('❌ localStorage is NOT available:', e);
-                alert('Warning: Local storage is not available. Your data will not be saved between sessions. This may be due to browser privacy settings or incognito mode.');
+                alert('Warning: Local storage is not available. Your data will not be saved between sessions.');
                 return false;
             }
+        }
+
+        // Page Navigation
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Remove active from all nav links
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            // Show selected page
+            document.getElementById(pageId).classList.add('active');
+            
+            // Highlight active nav link
+            event.target.classList.add('active');
+            
+            // Save current page
+            localStorage.setItem('currentPage', pageId);
         }
 
         // GPA Calculator
@@ -932,7 +1016,6 @@
                 saveAssignments();
                 updateAssignmentList();
                 
-                // Clear form
                 document.getElementById('assignmentName').value = '';
                 document.getElementById('assignmentCourse').value = '';
                 document.getElementById('assignmentDue').value = '';
@@ -945,7 +1028,6 @@
             assignments[index].completed = !assignments[index].completed;
             saveAssignments();
             updateAssignmentList();
-            console.log('✅ Assignment toggled:', assignments[index].name);
         }
 
         function deleteAssignment(index) {
@@ -962,12 +1044,17 @@
                 console.log('✅ Assignments saved to localStorage');
             } catch (e) {
                 console.error('Error saving assignments:', e);
-                alert('Failed to save assignments. Storage may be full.');
+                alert('Failed to save assignments.');
             }
         }
 
         function updateAssignmentList() {
             const list = document.getElementById('assignmentList');
+            if (assignments.length === 0) {
+                list.innerHTML = '<p style="color: #999; text-align: center; padding: 20px;">No assignments yet. Add your first one above!</p>';
+                return;
+            }
+            
             list.innerHTML = assignments.map((assignment, index) => {
                 const dueDate = new Date(assignment.due);
                 const today = new Date();
@@ -1018,11 +1105,9 @@
             
             if (savedSessions !== null) {
                 sessionsCompleted = parseInt(savedSessions);
-                console.log('✅ Loaded sessions:', sessionsCompleted);
             }
             if (savedStudyTime !== null) {
                 studyTime = parseInt(savedStudyTime);
-                console.log('✅ Loaded study time:', studyTime);
             }
             
             document.getElementById('sessionsCompleted').textContent = sessionsCompleted;
@@ -1046,7 +1131,6 @@
                     } else {
                         pauseTimer();
                         
-                        // Vibrate if supported (for mobile)
                         if (navigator.vibrate) {
                             navigator.vibrate([200, 100, 200, 100, 200]);
                         }
@@ -1055,10 +1139,8 @@
                         sessionsCompleted++;
                         studyTime++;
                         
-                        // Save to localStorage
                         localStorage.setItem('sessionsCompleted', sessionsCompleted.toString());
                         localStorage.setItem('studyTime', studyTime.toString());
-                        console.log('✅ Timer stats saved');
                         
                         document.getElementById('sessionsCompleted').textContent = sessionsCompleted;
                         document.getElementById('studyTime').textContent = studyTime;
@@ -1124,7 +1206,6 @@
                 saveSchedule();
                 updateScheduleList();
                 
-                // Clear form
                 document.getElementById('scheduleName').value = '';
                 document.getElementById('scheduleTime').value = '';
                 document.getElementById('scheduleLocation').value = '';
@@ -1146,12 +1227,17 @@
                 console.log('✅ Schedule saved to localStorage');
             } catch (e) {
                 console.error('Error saving schedule:', e);
-                alert('Failed to save schedule. Storage may be full.');
+                alert('Failed to save schedule.');
             }
         }
 
         function updateScheduleList() {
             const list = document.getElementById('scheduleList');
+            if (scheduleItems.length === 0) {
+                list.innerHTML = '<p style="color: #999; text-align: center; padding: 20px;">No schedule items yet. Add your first class above!</p>';
+                return;
+            }
+            
             list.innerHTML = scheduleItems.map((item, index) => `
                 <div class="schedule-item">
                     <div>
@@ -1163,105 +1249,7 @@
             `).join('');
         }
 
-        // Notes System (Multiple Notes)
-        let notes = [];
-
-        function loadNotes() {
-            const saved = localStorage.getItem('notes');
-            if (saved) {
-                try {
-                    notes = JSON.parse(saved);
-                    console.log('✅ Loaded notes:', notes.length);
-                    updateNotesList();
-                } catch (e) {
-                    console.error('Error loading notes:', e);
-                    notes = [];
-                }
-            }
-        }
-
-        function addNote() {
-            const title = document.getElementById('noteTitle').value;
-            const content = document.getElementById('noteContent').value;
-
-            if (title && content) {
-                notes.unshift({ // unshift adds to beginning
-                    title,
-                    content,
-                    date: new Date().toLocaleString(),
-                    id: Date.now()
-                });
-                saveNotes();
-                updateNotesList();
-                
-                // Clear form
-                document.getElementById('noteTitle').value = '';
-                document.getElementById('noteContent').value = '';
-                console.log('✅ Note added:', title);
-            } else {
-                alert('Please enter both title and content');
-            }
-        }
-
-        function editNote(index) {
-            const note = notes[index];
-            document.getElementById('noteTitle').value = note.title;
-            document.getElementById('noteContent').value = note.content;
-            
-            // Remove the note so user can re-save it
-            notes.splice(index, 1);
-            saveNotes();
-            updateNotesList();
-        }
-
-        function deleteNote(index) {
-            if (confirm('Delete this note?')) {
-                const noteTitle = notes[index].title;
-                notes.splice(index, 1);
-                saveNotes();
-                updateNotesList();
-                console.log('✅ Note deleted:', noteTitle);
-            }
-        }
-
-        function saveNotes() {
-            try {
-                localStorage.setItem('notes', JSON.stringify(notes));
-                console.log('✅ Notes saved to localStorage');
-            } catch (e) {
-                console.error('Error saving notes:', e);
-                alert('Failed to save notes. Storage may be full.');
-            }
-        }
-
-        function updateNotesList() {
-            const list = document.getElementById('notesList');
-            if (notes.length === 0) {
-                list.innerHTML = '<p style="color: #999; text-align: center; padding: 20px;">No notes yet. Create your first note above!</p>';
-                return;
-            }
-            
-            list.innerHTML = notes.map((note, index) => `
-                <div class="note-card">
-                    <div class="note-card-header">
-                        <div>
-                            <div class="note-card-title">${note.title}</div>
-                            <div class="note-card-date">${note.date}</div>
-                        </div>
-                    </div>
-                    <div class="note-card-content">${note.content}</div>
-                    <div class="note-actions">
-                        <button onclick="editNote(${index})" style="background: #667eea;">Edit</button>
-                        <button class="delete-btn" onclick="deleteNote(${index})">Delete</button>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        // Formula Management
-        let customFormulas = [];
-        
-        // Default formulas structure
+        // Formulas System
         const defaultFormulas = {
             electricity: [
                 { name: "Ohm's Law", formula: "V = IR" },
@@ -1314,75 +1302,122 @@
             ]
         };
 
-        function loadCustomFormulas() {
-            const saved = localStorage.getItem('customFormulas');
+        let customFormulas = {};
+        let customCategories = [];
+
+        function loadFormulas() {
+            const saved = localStorage.getItem('editedFormulas');
             if (saved) {
                 try {
-                    customFormulas = JSON.parse(saved);
-                    console.log('✅ Loaded custom formulas:', customFormulas.length);
-                    updateCustomFormulaList();
+                    const edited = JSON.parse(saved);
+                    Object.keys(edited).forEach(category => {
+                        if (defaultFormulas[category]) {
+                            defaultFormulas[category] = edited[category];
+                        }
+                    });
                 } catch (e) {
-                    console.error('Error loading custom formulas:', e);
-                    customFormulas = [];
+                    console.error('Error loading edited formulas:', e);
                 }
             }
+
+            const savedCustom = localStorage.getItem('customFormulas');
+            if (savedCustom) {
+                try {
+                    customFormulas = JSON.parse(savedCustom);
+                    console.log('✅ Loaded custom formulas');
+                } catch (e) {
+                    console.error('Error loading custom formulas:', e);
+                    customFormulas = {};
+                }
+            }
+
+            const savedCategories = localStorage.getItem('customCategories');
+            if (savedCategories) {
+                try {
+                    customCategories = JSON.parse(savedCategories);
+                    updateCategoryDropdown();
+                } catch (e) {
+                    console.error('Error loading custom categories:', e);
+                    customCategories = [];
+                }
+            }
+
+            renderAllFormulas();
         }
 
-        function addCustomFormula() {
-            const name = document.getElementById('customFormulaName').value;
-            const formula = document.getElementById('customFormulaText').value;
+        function renderAllFormulas() {
+            // Render default categories
+            Object.keys(defaultFormulas).forEach(category => {
+                const container = document.getElementById(category);
+                if (container) {
+                    container.innerHTML = defaultFormulas[category].map((item, index) => `
+                        <div class="formula-card">
+                            <strong>${item.name}:</strong> ${item.formula}
+                            <button class="edit-formula-btn" onclick="editFormula('${category}', ${index})">✏️</button>
+                        </div>
+                    `).join('');
+                }
+            });
 
-            if (name && formula) {
-                customFormulas.push({
-                    name,
-                    formula,
-                    id: Date.now()
-                });
-                saveCustomFormulas();
-                updateCustomFormulaList();
-                
-                // Clear form
-                document.getElementById('customFormulaName').value = '';
-                document.getElementById('customFormulaText').value = '';
-                console.log('✅ Custom formula added:', name);
-            } else {
-                alert('Please enter both name and formula');
-            }
+            // Render custom formulas
+            renderCustomFormulas();
         }
 
-        function deleteCustomFormula(index) {
-            if (confirm('Delete this formula?')) {
-                const formulaName = customFormulas[index].name;
-                customFormulas.splice(index, 1);
-                saveCustomFormulas();
-                updateCustomFormulaList();
-                console.log('✅ Custom formula deleted:', formulaName);
-            }
+        function renderCustomFormulas() {
+            const container = document.getElementById('customCategoriesList');
+            let html = '';
+
+            Object.keys(customFormulas).forEach(category => {
+                if (customFormulas[category] && customFormulas[category].length > 0) {
+                    const icon = getCategoryIcon(category);
+                    html += `
+                        <div style="margin-top: 30px;">
+                            <h3 style="color: #667eea; margin-bottom: 15px;">${icon} ${formatCategoryName(category)}</h3>
+                    `;
+                    
+                    customFormulas[category].forEach((item, index) => {
+                        html += `
+                            <div class="formula-card">
+                                <strong>${item.name}:</strong> ${item.formula}
+                                <button class="delete-btn" onclick="deleteCustomFormula('${category}', ${index})" style="float: right;">Delete</button>
+                            </div>
+                        `;
+                    });
+                    
+                    html += '</div>';
+                }
+            });
+
+            container.innerHTML = html || '<p style="color: #999; text-align: center; padding: 20px;">No custom formulas yet. Add your first one above!</p>';
         }
 
-        function saveCustomFormulas() {
-            try {
-                localStorage.setItem('customFormulas', JSON.stringify(customFormulas));
-                console.log('✅ Custom formulas saved');
-            } catch (e) {
-                console.error('Error saving custom formulas:', e);
-                alert('Failed to save custom formulas.');
-            }
+        function getCategoryIcon(category) {
+            const icons = {
+                electricity: '⚡',
+                motion: '🚀',
+                energy: '💡',
+                fluids: '💧',
+                materials: '🔧',
+                thermo: '🔥'
+            };
+            return icons[category] || '📐';
         }
 
-        function updateCustomFormulaList() {
-            const list = document.getElementById('customFormulaList');
-            if (customFormulas.length === 0) {
-                list.innerHTML = '<p style="color: #999; text-align: center; padding: 20px;">No custom formulas yet. Add your first one above!</p>';
-                return;
-            }
+        function formatCategoryName(category) {
+            return category.charAt(0).toUpperCase() + category.slice(1);
+        }
+
+        function showFormulaCategory(category) {
+            document.querySelectorAll('.formula-category').forEach(cat => {
+                cat.classList.remove('active');
+            });
             
-            list.innerHTML = customFormulas.map((item, index) => `
-                <div class="formula-card">
-                    <strong>${item.name}:</strong> ${item.formula}
-                    <button class="delete-btn" onclick="deleteCustomFormula(${index})" style="float: right; margin-left: 10px;">Delete</button>
-                </div>
-            `).join('');
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            document.getElementById(category).classList.add('active');
+            event.target.classList.add('active');
         }
 
         function editFormula(category, index) {
@@ -1392,7 +1427,7 @@
             if (newFormulaText !== null && newFormulaText.trim() !== '') {
                 defaultFormulas[category][index].formula = newFormulaText.trim();
                 saveEditedFormulas();
-                location.reload(); // Reload to show changes
+                renderAllFormulas();
                 console.log('✅ Formula edited:', currentFormula.name);
             }
         }
@@ -1406,48 +1441,218 @@
             }
         }
 
-        function loadEditedFormulas() {
-            const saved = localStorage.getItem('editedFormulas');
+        function addCustomFormula() {
+            const name = document.getElementById('customFormulaName').value;
+            const formula = document.getElementById('customFormulaText').value;
+            const categorySelect = document.getElementById('customFormulaCategory');
+            let category = categorySelect.value;
+
+            if (!name || !formula) {
+                alert('Please enter both name and formula');
+                return;
+            }
+
+            if (category === 'new') {
+                const newCat = document.getElementById('newCategoryName').value.trim().toLowerCase();
+                if (!newCat) {
+                    alert('Please enter a new category name');
+                    return;
+                }
+                category = newCat;
+                if (!customCategories.includes(category)) {
+                    customCategories.push(category);
+                    saveCustomCategories();
+                    updateCategoryDropdown();
+                }
+            }
+
+            if (!customFormulas[category]) {
+                customFormulas[category] = [];
+            }
+
+            customFormulas[category].push({ name, formula, id: Date.now() });
+            saveCustomFormulas();
+            renderCustomFormulas();
+            
+            document.getElementById('customFormulaName').value = '';
+            document.getElementById('customFormulaText').value = '';
+            console.log('✅ Custom formula added:', name);
+        }
+
+        function deleteCustomFormula(category, index) {
+            if (confirm('Delete this formula?')) {
+                const formulaName = customFormulas[category][index].name;
+                customFormulas[category].splice(index, 1);
+                
+                if (customFormulas[category].length === 0) {
+                    delete customFormulas[category];
+                }
+                
+                saveCustomFormulas();
+                renderCustomFormulas();
+                console.log('✅ Custom formula deleted:', formulaName);
+            }
+        }
+
+        function saveCustomFormulas() {
+            try {
+                localStorage.setItem('customFormulas', JSON.stringify(customFormulas));
+                console.log('✅ Custom formulas saved');
+            } catch (e) {
+                console.error('Error saving custom formulas:', e);
+            }
+        }
+
+        function saveCustomCategories() {
+            try {
+                localStorage.setItem('customCategories', JSON.stringify(customCategories));
+            } catch (e) {
+                console.error('Error saving custom categories:', e);
+            }
+        }
+
+        function updateCategoryDropdown() {
+            const select = document.getElementById('customFormulaCategory');
+            const currentValue = select.value;
+            
+            let html = '<option value="new">➕ Create New Category</option>';
+            html += '<option value="electricity">⚡ Electricity</option>';
+            html += '<option value="motion">🚀 Motion</option>';
+            html += '<option value="energy">💡 Energy</option>';
+            html += '<option value="fluids">💧 Fluids</option>';
+            html += '<option value="materials">🔧 Materials</option>';
+            html += '<option value="thermo">🔥 Thermo</option>';
+            
+            customCategories.forEach(cat => {
+                html += `<option value="${cat}">📐 ${formatCategoryName(cat)}</option>`;
+            });
+            
+            select.innerHTML = html;
+            if (currentValue) {
+                select.value = currentValue;
+            }
+        }
+
+        // Show/hide new category input
+        document.addEventListener('DOMContentLoaded', function() {
+            const categorySelect = document.getElementById('customFormulaCategory');
+            const newCategoryGroup = document.getElementById('newCategoryGroup');
+            
+            categorySelect.addEventListener('change', function() {
+                if (this.value === 'new') {
+                    newCategoryGroup.style.display = 'block';
+                } else {
+                    newCategoryGroup.style.display = 'none';
+                }
+            });
+        });
+
+        // Notes System
+        let notes = [];
+
+        function loadNotes() {
+            const saved = localStorage.getItem('notes');
             if (saved) {
                 try {
-                    const edited = JSON.parse(saved);
-                    // Merge edited formulas with defaults
-                    Object.keys(edited).forEach(category => {
-                        if (defaultFormulas[category]) {
-                            defaultFormulas[category] = edited[category];
-                        }
-                    });
-                    console.log('✅ Loaded edited formulas');
+                    notes = JSON.parse(saved);
+                    console.log('✅ Loaded notes:', notes.length);
+                    updateNotesList();
                 } catch (e) {
-                    console.error('Error loading edited formulas:', e);
+                    console.error('Error loading notes:', e);
+                    notes = [];
                 }
             }
         }
 
-        // Category tabs for Quick Reference
-        function showCategory(category) {
-            // Hide all categories
-            document.querySelectorAll('.formula-category').forEach(cat => {
-                cat.classList.remove('active');
-            });
-            
-            // Remove active from all tabs
-            document.querySelectorAll('.tab-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            
-            // Show selected category
-            document.getElementById(category).classList.add('active');
-            
-            // Highlight active tab
-            event.target.classList.add('active');
+        function addNote() {
+            const title = document.getElementById('noteTitle').value;
+            const content = document.getElementById('noteContent').value;
+
+            if (title && content) {
+                notes.unshift({
+                    title,
+                    content,
+                    date: new Date().toLocaleString(),
+                    id: Date.now(),
+                    expanded: false
+                });
+                saveNotes();
+                updateNotesList();
+                
+                document.getElementById('noteTitle').value = '';
+                document.getElementById('noteContent').value = '';
+                console.log('✅ Note added:', title);
+            } else {
+                alert('Please enter both title and content');
+            }
         }
 
-        // Initialize everything when page loads
+        function toggleNote(index) {
+            const noteCard = document.querySelector(`[data-note-id="${notes[index].id}"]`);
+            noteCard.classList.toggle('expanded');
+        }
+
+        function editNote(index) {
+            const note = notes[index];
+            document.getElementById('noteTitle').value = note.title;
+            document.getElementById('noteContent').value = note.content;
+            
+            notes.splice(index, 1);
+            saveNotes();
+            updateNotesList();
+        }
+
+        function deleteNote(index) {
+            if (confirm('Delete this note?')) {
+                const noteTitle = notes[index].title;
+                notes.splice(index, 1);
+                saveNotes();
+                updateNotesList();
+                console.log('✅ Note deleted:', noteTitle);
+            }
+        }
+
+        function saveNotes() {
+            try {
+                localStorage.setItem('notes', JSON.stringify(notes));
+                console.log('✅ Notes saved');
+            } catch (e) {
+                console.error('Error saving notes:', e);
+                alert('Failed to save notes.');
+            }
+        }
+
+        function updateNotesList() {
+            const list = document.getElementById('notesList');
+            if (notes.length === 0) {
+                list.innerHTML = '<p style="color: #999; text-align: center; padding: 20px;">No notes yet. Create your first note above!</p>';
+                return;
+            }
+            
+            list.innerHTML = notes.map((note, index) => `
+                <div class="note-card" data-note-id="${note.id}">
+                    <div class="note-card-header" onclick="toggleNote(${index})">
+                        <div class="note-card-title-section">
+                            <div class="note-card-title">${note.title}</div>
+                            <div class="note-card-date">${note.date}</div>
+                        </div>
+                        <div class="note-expand-icon">▼</div>
+                    </div>
+                    <div class="note-card-content">
+                        <div class="note-card-text">${note.content}</div>
+                        <div class="note-actions">
+                            <button class="edit-btn" onclick="editNote(${index})">Edit</button>
+                            <button class="delete-btn" onclick="deleteNote(${index})">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Initialize
         document.addEventListener('DOMContentLoaded', function() {
             console.log('🚀 Dashboard initializing...');
             
-            // Test localStorage first
             if (!testLocalStorage()) {
                 return;
             }
@@ -1458,16 +1663,22 @@
             loadSchedule();
             loadNotes();
             loadTimerStats();
-            loadEditedFormulas();
-            loadCustomFormulas();
+            loadFormulas();
             updateTimerDisplay();
             
+            // Restore last page
+            const lastPage = localStorage.getItem('currentPage');
+            if (lastPage) {
+                const pageBtn = document.querySelector(`[onclick="showPage('${lastPage}')"]`);
+                if (pageBtn) {
+                    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+                    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                    document.getElementById(lastPage).classList.add('active');
+                    pageBtn.classList.add('active');
+                }
+            }
+            
             console.log('✅ Dashboard fully loaded!');
-            console.log('📊 Courses:', courses.length);
-            console.log('📝 Assignments:', assignments.length);
-            console.log('📅 Schedule items:', scheduleItems.length);
-            console.log('📋 Notes:', notes.length);
-            console.log('🧮 Custom formulas:', customFormulas.length);
         });
     </script>
 </body>
