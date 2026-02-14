@@ -409,27 +409,31 @@
             overflow: hidden;
         }
 
-        .note-card.branch-work {
-            border-left-color: #3498db;
-        }
-
-        .note-card.branch-study {
+        .note-card.branch-electricity {
             border-left-color: #667eea;
         }
 
-        .note-card.branch-personal {
-            border-left-color: #2ecc71;
+        .note-card.branch-motion {
+            border-left-color: #3498db;
         }
 
-        .note-card.branch-project {
-            border-left-color: #e74c3c;
-        }
-
-        .note-card.branch-exam {
+        .note-card.branch-energy {
             border-left-color: #f39c12;
         }
 
-        .note-card.branch-ideas {
+        .note-card.branch-fluids {
+            border-left-color: #3498db;
+        }
+
+        .note-card.branch-materials {
+            border-left-color: #95a5a6;
+        }
+
+        .note-card.branch-thermo {
+            border-left-color: #e74c3c;
+        }
+
+        .note-card.branch-general {
             border-left-color: #9b59b6;
         }
 
@@ -467,32 +471,37 @@
             text-transform: uppercase;
         }
 
-        .note-branch-badge.branch-work {
-            background: #3498db;
-            color: white;
-        }
-
-        .note-branch-badge.branch-study {
+        .note-branch-badge.branch-electricity {
             background: #667eea;
             color: white;
         }
 
-        .note-branch-badge.branch-personal {
-            background: #2ecc71;
+        .note-branch-badge.branch-motion {
+            background: #3498db;
             color: white;
         }
 
-        .note-branch-badge.branch-project {
-            background: #e74c3c;
-            color: white;
-        }
-
-        .note-branch-badge.branch-exam {
+        .note-branch-badge.branch-energy {
             background: #f39c12;
             color: white;
         }
 
-        .note-branch-badge.branch-ideas {
+        .note-branch-badge.branch-fluids {
+            background: #3498db;
+            color: white;
+        }
+
+        .note-branch-badge.branch-materials {
+            background: #95a5a6;
+            color: white;
+        }
+
+        .note-branch-badge.branch-thermo {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .note-branch-badge.branch-general {
             background: #9b59b6;
             color: white;
         }
@@ -538,32 +547,37 @@
             border-color: #667eea;
         }
 
-        .note-filter-btn.work.active {
-            background: #3498db;
-            border-color: #3498db;
-        }
-
-        .note-filter-btn.study.active {
+        .note-filter-btn.electricity.active {
             background: #667eea;
             border-color: #667eea;
         }
 
-        .note-filter-btn.personal.active {
-            background: #2ecc71;
-            border-color: #2ecc71;
+        .note-filter-btn.motion.active {
+            background: #3498db;
+            border-color: #3498db;
         }
 
-        .note-filter-btn.project.active {
-            background: #e74c3c;
-            border-color: #e74c3c;
-        }
-
-        .note-filter-btn.exam.active {
+        .note-filter-btn.energy.active {
             background: #f39c12;
             border-color: #f39c12;
         }
 
-        .note-filter-btn.ideas.active {
+        .note-filter-btn.fluids.active {
+            background: #3498db;
+            border-color: #3498db;
+        }
+
+        .note-filter-btn.materials.active {
+            background: #95a5a6;
+            border-color: #95a5a6;
+        }
+
+        .note-filter-btn.thermo.active {
+            background: #e74c3c;
+            border-color: #e74c3c;
+        }
+
+        .note-filter-btn.general.active {
             background: #9b59b6;
             border-color: #9b59b6;
         }
@@ -996,17 +1010,18 @@
             <div class="card">
                 <div class="input-group">
                     <label>Note Title</label>
-                    <input type="text" id="noteTitle" placeholder="e.g., Exam Prep">
+                    <input type="text" id="noteTitle" placeholder="e.g., Ohm's Law Examples">
                 </div>
                 <div class="input-group">
-                    <label>Branch/Category</label>
+                    <label>Subject/Branch</label>
                     <select id="noteBranch">
-                        <option value="study">📚 Study</option>
-                        <option value="work">💼 Work</option>
-                        <option value="personal">👤 Personal</option>
-                        <option value="project">🚀 Project</option>
-                        <option value="exam">📝 Exam</option>
-                        <option value="ideas">💡 Ideas</option>
+                        <option value="electricity">⚡ Electricity</option>
+                        <option value="motion">🚀 Motion</option>
+                        <option value="energy">💡 Energy</option>
+                        <option value="fluids">💧 Fluids</option>
+                        <option value="materials">🔧 Materials</option>
+                        <option value="thermo">🔥 Thermodynamics</option>
+                        <option value="general">📚 General</option>
                     </select>
                 </div>
                 <div class="input-group">
@@ -1017,12 +1032,13 @@
                 
                 <div class="note-filter-tabs" id="noteFilterTabs" style="margin-top: 30px;">
                     <button class="note-filter-btn all active" onclick="filterNotes('all')">All</button>
-                    <button class="note-filter-btn study" onclick="filterNotes('study')">📚 Study</button>
-                    <button class="note-filter-btn work" onclick="filterNotes('work')">💼 Work</button>
-                    <button class="note-filter-btn personal" onclick="filterNotes('personal')">👤 Personal</button>
-                    <button class="note-filter-btn project" onclick="filterNotes('project')">🚀 Project</button>
-                    <button class="note-filter-btn exam" onclick="filterNotes('exam')">📝 Exam</button>
-                    <button class="note-filter-btn ideas" onclick="filterNotes('ideas')">💡 Ideas</button>
+                    <button class="note-filter-btn electricity" onclick="filterNotes('electricity')">⚡ Electricity</button>
+                    <button class="note-filter-btn motion" onclick="filterNotes('motion')">🚀 Motion</button>
+                    <button class="note-filter-btn energy" onclick="filterNotes('energy')">💡 Energy</button>
+                    <button class="note-filter-btn fluids" onclick="filterNotes('fluids')">💧 Fluids</button>
+                    <button class="note-filter-btn materials" onclick="filterNotes('materials')">🔧 Materials</button>
+                    <button class="note-filter-btn thermo" onclick="filterNotes('thermo')">🔥 Thermo</button>
+                    <button class="note-filter-btn general" onclick="filterNotes('general')">📚 General</button>
                 </div>
                 
                 <div id="notesList" style="margin-top: 20px;"></div>
@@ -1783,7 +1799,7 @@
                 
                 document.getElementById('noteTitle').value = '';
                 document.getElementById('noteContent').value = '';
-                document.getElementById('noteBranch').value = 'study';
+                document.getElementById('noteBranch').value = 'electricity';
                 console.log('✅ Note added:', title);
             } else {
                 alert('Please enter both title and content');
@@ -1850,12 +1866,13 @@
 
         function getBranchLabel(branch) {
             const labels = {
-                study: '📚 Study',
-                work: '💼 Work',
-                personal: '👤 Personal',
-                project: '🚀 Project',
-                exam: '📝 Exam',
-                ideas: '💡 Ideas'
+                electricity: '⚡ Electricity',
+                motion: '🚀 Motion',
+                energy: '💡 Energy',
+                fluids: '💧 Fluids',
+                materials: '🔧 Materials',
+                thermo: '🔥 Thermo',
+                general: '📚 General'
             };
             return labels[branch] || branch;
         }
