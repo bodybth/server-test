@@ -409,6 +409,30 @@
             overflow: hidden;
         }
 
+        .note-card.branch-work {
+            border-left-color: #3498db;
+        }
+
+        .note-card.branch-study {
+            border-left-color: #667eea;
+        }
+
+        .note-card.branch-personal {
+            border-left-color: #2ecc71;
+        }
+
+        .note-card.branch-project {
+            border-left-color: #e74c3c;
+        }
+
+        .note-card.branch-exam {
+            border-left-color: #f39c12;
+        }
+
+        .note-card.branch-ideas {
+            border-left-color: #9b59b6;
+        }
+
         .note-card-header {
             display: flex;
             justify-content: space-between;
@@ -433,9 +457,115 @@
             margin-bottom: 3px;
         }
 
+        .note-branch-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 10px;
+            font-weight: 600;
+            margin-left: 8px;
+            text-transform: uppercase;
+        }
+
+        .note-branch-badge.branch-work {
+            background: #3498db;
+            color: white;
+        }
+
+        .note-branch-badge.branch-study {
+            background: #667eea;
+            color: white;
+        }
+
+        .note-branch-badge.branch-personal {
+            background: #2ecc71;
+            color: white;
+        }
+
+        .note-branch-badge.branch-project {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .note-branch-badge.branch-exam {
+            background: #f39c12;
+            color: white;
+        }
+
+        .note-branch-badge.branch-ideas {
+            background: #9b59b6;
+            color: white;
+        }
+
         .note-card-date {
             color: #999;
             font-size: 12px;
+        }
+
+        .note-filter-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .note-filter-btn {
+            padding: 8px 16px;
+            background: #f8f9fa;
+            color: #666;
+            border: 2px solid transparent;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .note-filter-btn:hover {
+            background: #e9ecef;
+        }
+
+        .note-filter-btn.active {
+            color: white;
+        }
+
+        .note-filter-btn.all.active {
+            background: #667eea;
+            border-color: #667eea;
+        }
+
+        .note-filter-btn.work.active {
+            background: #3498db;
+            border-color: #3498db;
+        }
+
+        .note-filter-btn.study.active {
+            background: #667eea;
+            border-color: #667eea;
+        }
+
+        .note-filter-btn.personal.active {
+            background: #2ecc71;
+            border-color: #2ecc71;
+        }
+
+        .note-filter-btn.project.active {
+            background: #e74c3c;
+            border-color: #e74c3c;
+        }
+
+        .note-filter-btn.exam.active {
+            background: #f39c12;
+            border-color: #f39c12;
+        }
+
+        .note-filter-btn.ideas.active {
+            background: #9b59b6;
+            border-color: #9b59b6;
         }
 
         .note-expand-icon {
@@ -869,12 +999,33 @@
                     <input type="text" id="noteTitle" placeholder="e.g., Exam Prep">
                 </div>
                 <div class="input-group">
+                    <label>Branch/Category</label>
+                    <select id="noteBranch">
+                        <option value="study">📚 Study</option>
+                        <option value="work">💼 Work</option>
+                        <option value="personal">👤 Personal</option>
+                        <option value="project">🚀 Project</option>
+                        <option value="exam">📝 Exam</option>
+                        <option value="ideas">💡 Ideas</option>
+                    </select>
+                </div>
+                <div class="input-group">
                     <label>Note Content</label>
                     <textarea class="notes-area" id="noteContent" placeholder="Write your note here..."></textarea>
                 </div>
                 <button onclick="addNote()">Save Note</button>
                 
-                <div id="notesList" style="margin-top: 30px;"></div>
+                <div class="note-filter-tabs" id="noteFilterTabs" style="margin-top: 30px;">
+                    <button class="note-filter-btn all active" onclick="filterNotes('all')">All</button>
+                    <button class="note-filter-btn study" onclick="filterNotes('study')">📚 Study</button>
+                    <button class="note-filter-btn work" onclick="filterNotes('work')">💼 Work</button>
+                    <button class="note-filter-btn personal" onclick="filterNotes('personal')">👤 Personal</button>
+                    <button class="note-filter-btn project" onclick="filterNotes('project')">🚀 Project</button>
+                    <button class="note-filter-btn exam" onclick="filterNotes('exam')">📝 Exam</button>
+                    <button class="note-filter-btn ideas" onclick="filterNotes('ideas')">💡 Ideas</button>
+                </div>
+                
+                <div id="notesList" style="margin-top: 20px;"></div>
             </div>
         </div>
 
@@ -1597,6 +1748,7 @@
 
         // Notes System
         let notes = [];
+        let currentNoteFilter = 'all';
 
         function loadNotes() {
             const saved = localStorage.getItem('notes');
@@ -1615,11 +1767,13 @@
         function addNote() {
             const title = document.getElementById('noteTitle').value;
             const content = document.getElementById('noteContent').value;
+            const branch = document.getElementById('noteBranch').value;
 
             if (title && content) {
                 notes.unshift({
                     title,
                     content,
+                    branch,
                     date: new Date().toLocaleString(),
                     id: Date.now(),
                     expanded: false
@@ -1629,6 +1783,7 @@
                 
                 document.getElementById('noteTitle').value = '';
                 document.getElementById('noteContent').value = '';
+                document.getElementById('noteBranch').value = 'study';
                 console.log('✅ Note added:', title);
             } else {
                 alert('Please enter both title and content');
@@ -1636,28 +1791,73 @@
         }
 
         function toggleNote(index) {
-            const noteCard = document.querySelector(`[data-note-id="${notes[index].id}"]`);
+            const filteredNotes = getFilteredNotes();
+            const note = filteredNotes[index];
+            const noteCard = document.querySelector(`[data-note-id="${note.id}"]`);
             noteCard.classList.toggle('expanded');
         }
 
         function editNote(index) {
-            const note = notes[index];
+            const filteredNotes = getFilteredNotes();
+            const note = filteredNotes[index];
+            
+            // Find original index in full notes array
+            const originalIndex = notes.findIndex(n => n.id === note.id);
+            
             document.getElementById('noteTitle').value = note.title;
             document.getElementById('noteContent').value = note.content;
+            document.getElementById('noteBranch').value = note.branch;
             
-            notes.splice(index, 1);
+            notes.splice(originalIndex, 1);
             saveNotes();
             updateNotesList();
         }
 
         function deleteNote(index) {
             if (confirm('Delete this note?')) {
-                const noteTitle = notes[index].title;
-                notes.splice(index, 1);
+                const filteredNotes = getFilteredNotes();
+                const note = filteredNotes[index];
+                
+                // Find original index in full notes array
+                const originalIndex = notes.findIndex(n => n.id === note.id);
+                const noteTitle = notes[originalIndex].title;
+                
+                notes.splice(originalIndex, 1);
                 saveNotes();
                 updateNotesList();
                 console.log('✅ Note deleted:', noteTitle);
             }
+        }
+
+        function filterNotes(branch) {
+            currentNoteFilter = branch;
+            
+            // Update active filter button
+            document.querySelectorAll('.note-filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            updateNotesList();
+        }
+
+        function getFilteredNotes() {
+            if (currentNoteFilter === 'all') {
+                return notes;
+            }
+            return notes.filter(note => note.branch === currentNoteFilter);
+        }
+
+        function getBranchLabel(branch) {
+            const labels = {
+                study: '📚 Study',
+                work: '💼 Work',
+                personal: '👤 Personal',
+                project: '🚀 Project',
+                exam: '📝 Exam',
+                ideas: '💡 Ideas'
+            };
+            return labels[branch] || branch;
         }
 
         function saveNotes() {
@@ -1672,16 +1872,25 @@
 
         function updateNotesList() {
             const list = document.getElementById('notesList');
-            if (notes.length === 0) {
-                list.innerHTML = '<p style="color: #999; text-align: center; padding: 20px;">No notes yet. Create your first note above!</p>';
+            const filteredNotes = getFilteredNotes();
+            
+            if (filteredNotes.length === 0) {
+                if (currentNoteFilter === 'all') {
+                    list.innerHTML = '<p style="color: #999; text-align: center; padding: 20px;">No notes yet. Create your first note above!</p>';
+                } else {
+                    list.innerHTML = `<p style="color: #999; text-align: center; padding: 20px;">No notes in ${getBranchLabel(currentNoteFilter)} category.</p>`;
+                }
                 return;
             }
             
-            list.innerHTML = notes.map((note, index) => `
-                <div class="note-card" data-note-id="${note.id}">
+            list.innerHTML = filteredNotes.map((note, index) => `
+                <div class="note-card branch-${note.branch}" data-note-id="${note.id}">
                     <div class="note-card-header" onclick="toggleNote(${index})">
                         <div class="note-card-title-section">
-                            <div class="note-card-title">${note.title}</div>
+                            <div class="note-card-title">
+                                ${note.title}
+                                <span class="note-branch-badge branch-${note.branch}">${getBranchLabel(note.branch)}</span>
+                            </div>
                             <div class="note-card-date">${note.date}</div>
                         </div>
                         <div class="note-expand-icon">▼</div>
