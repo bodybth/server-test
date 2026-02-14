@@ -326,6 +326,65 @@
             margin-left: 5px;
         }
 
+        .edit-formula-btn {
+            background: transparent;
+            color: #667eea;
+            border: none;
+            padding: 2px 8px;
+            font-size: 14px;
+            cursor: pointer;
+            float: right;
+            transition: transform 0.2s;
+        }
+
+        .edit-formula-btn:hover {
+            transform: scale(1.2);
+            background: transparent;
+        }
+
+        .note-card {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 4px solid #667eea;
+        }
+
+        .note-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .note-card-title {
+            font-weight: 600;
+            color: #333;
+            font-size: 16px;
+        }
+
+        .note-card-date {
+            color: #999;
+            font-size: 12px;
+        }
+
+        .note-card-content {
+            color: #555;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .note-actions {
+            display: flex;
+            gap: 5px;
+            margin-top: 10px;
+        }
+
+        .note-actions button {
+            padding: 5px 12px;
+            font-size: 12px;
+        }
+
         @media (max-width: 768px) {
             .grid {
                 grid-template-columns: 1fr;
@@ -477,13 +536,13 @@
                 <div class="input-group">
                     <label>Day</label>
                     <select id="scheduleDay">
-                        <option value="Monday">Saturday</option>
-                        <option value="Monday">Sunday</option>
                         <option value="Monday">Monday</option>
                         <option value="Tuesday">Tuesday</option>
                         <option value="Wednesday">Wednesday</option>
                         <option value="Thursday">Thursday</option>
                         <option value="Friday">Friday</option>
+                        <option value="Saturday">Saturday</option>
+                        <option value="Sunday">Sunday</option>
                     </select>
                 </div>
                 <div class="input-group">
@@ -512,135 +571,186 @@
                     <button class="tab-btn" onclick="showCategory('fluids')">💧 Fluids</button>
                     <button class="tab-btn" onclick="showCategory('materials')">🔧 Materials</button>
                     <button class="tab-btn" onclick="showCategory('thermo')">🔥 Thermo</button>
+                    <button class="tab-btn" onclick="showCategory('custom')">➕ Custom</button>
                 </div>
 
                 <div id="electricity" class="formula-category active">
                     <div class="formula-card">
                         <strong>Ohm's Law:</strong> V = IR
+                        <button class="edit-formula-btn" onclick="editFormula('electricity', 0)">✏️</button>
                     </div>
                     <div class="formula-card">
                         <strong>Power:</strong> P = IV = V²/R = I²R
+                        <button class="edit-formula-btn" onclick="editFormula('electricity', 1)">✏️</button>
                     </div>
                     <div class="formula-card">
                         <strong>Coulomb's Law:</strong> F = k(q₁q₂)/r²
+                        <button class="edit-formula-btn" onclick="editFormula('electricity', 2)">✏️</button>
                     </div>
                     <div class="formula-card">
                         <strong>Capacitance:</strong> C = Q/V
+                        <button class="edit-formula-btn" onclick="editFormula('electricity', 3)">✏️</button>
                     </div>
                     <div class="formula-card">
                         <strong>Resistance (series):</strong> R_total = R₁ + R₂ + R₃
+                        <button class="edit-formula-btn" onclick="editFormula('electricity', 4)">✏️</button>
                     </div>
                     <div class="formula-card">
                         <strong>Resistance (parallel):</strong> 1/R_total = 1/R₁ + 1/R₂ + 1/R₃
+                        <button class="edit-formula-btn" onclick="editFormula('electricity', 5)">✏️</button>
                     </div>
                 </div>
 
                 <div id="motion" class="formula-category">
                     <div class="formula-card">
                         <strong>Newton's 2nd Law:</strong> F = ma
+                        <button class="edit-formula-btn" onclick="editFormula('motion', 0)">✏️</button>
                     </div>
                     <div class="formula-card">
                         <strong>Velocity:</strong> v = v₀ + at
+                        <button class="edit-formula-btn" onclick="editFormula('motion', 1)">✏️</button>
                     </div>
                     <div class="formula-card">
                         <strong>Position:</strong> x = x₀ + v₀t + ½at²
+                        <button class="edit-formula-btn" onclick="editFormula('motion', 2)">✏️</button>
                     </div>
                     <div class="formula-card">
                         <strong>Momentum:</strong> p = mv
+                        <button class="edit-formula-btn" onclick="editFormula('motion', 3)">✏️</button>
                     </div>
                     <div class="formula-card">
                         <strong>Impulse:</strong> J = FΔt = Δp
+                        <button class="edit-formula-btn" onclick="editFormula('motion', 4)">✏️</button>
                     </div>
                     <div class="formula-card">
                         <strong>Centripetal Force:</strong> F = mv²/r
+                        <button class="edit-formula-btn" onclick="editFormula('motion', 5)">✏️</button>
                     </div>
                     <div class="formula-card">
                         <strong>Angular Velocity:</strong> ω = θ/t
+                        <button class="edit-formula-btn" onclick="editFormula('motion', 6)">✏️</button>
                     </div>
                 </div>
 
                 <div id="energy" class="formula-category">
                     <div class="formula-card">
                         <strong>Kinetic Energy:</strong> KE = ½mv²
+                        <button class="edit-formula-btn" onclick="editFormula('energy', 0)">✏️</button>
                     </div>
                     <div class="formula-card">
                         <strong>Potential Energy:</strong> PE = mgh
+                        <button class="edit-formula-btn" onclick="editFormula('energy', 1)">✏️</button>
                     </div>
                     <div class="formula-card">
                         <strong>Work:</strong> W = F·d·cos(θ)
+                        <button class="edit-formula-btn" onclick="editFormula('energy', 2)">✏️</button>
                     </div>
                     <div class="formula-card">
                         <strong>Power:</strong> P = W/t = F·v
+                        <button class="edit-formula-btn" onclick="editFormula('energy', 3)">✏️</button>
                     </div>
                     <div class="formula-card">
                         <strong>Elastic Potential:</strong> PE = ½kx²
+                        <button class="edit-formula-btn" onclick="editFormula('energy', 4)">✏️</button>
                     </div>
                     <div class="formula-card">
                         <strong>Conservation:</strong> KE₁ + PE₁ = KE₂ + PE₂
+                        <button class="edit-formula-btn" onclick="editFormula('energy', 5)">✏️</button>
                     </div>
                 </div>
 
                 <div id="fluids" class="formula-category">
                     <div class="formula-card">
                         <strong>Bernoulli's Equation:</strong> P + ½ρv² + ρgh = constant
+                        <button class="edit-formula-btn" onclick="editFormula('fluids', 0)">✏️</button>
                     </div>
                     <div class="formula-card">
                         <strong>Continuity:</strong> A₁v₁ = A₂v₂
+                        <button class="edit-formula-btn" onclick="editFormula('fluids', 1)">✏️</button>
                     </div>
                     <div class="formula-card">
                         <strong>Pressure:</strong> P = F/A
+                        <button class="edit-formula-btn" onclick="editFormula('fluids', 2)">✏️</button>
                     </div>
                     <div class="formula-card">
                         <strong>Hydrostatic Pressure:</strong> P = ρgh
+                        <button class="edit-formula-btn" onclick="editFormula('fluids', 3)">✏️</button>
                     </div>
                     <div class="formula-card">
                         <strong>Buoyancy:</strong> F_b = ρ_fluid·V_displaced·g
+                        <button class="edit-formula-btn" onclick="editFormula('fluids', 4)">✏️</button>
                     </div>
                     <div class="formula-card">
                         <strong>Flow Rate:</strong> Q = A·v
+                        <button class="edit-formula-btn" onclick="editFormula('fluids', 5)">✏️</button>
                     </div>
                 </div>
 
                 <div id="materials" class="formula-category">
                     <div class="formula-card">
                         <strong>Stress:</strong> σ = F/A
+                        <button class="edit-formula-btn" onclick="editFormula('materials', 0)">✏️</button>
                     </div>
                     <div class="formula-card">
                         <strong>Strain:</strong> ε = ΔL/L₀
+                        <button class="edit-formula-btn" onclick="editFormula('materials', 1)">✏️</button>
                     </div>
                     <div class="formula-card">
                         <strong>Young's Modulus:</strong> E = σ/ε
+                        <button class="edit-formula-btn" onclick="editFormula('materials', 2)">✏️</button>
                     </div>
                     <div class="formula-card">
                         <strong>Shear Stress:</strong> τ = F/A
+                        <button class="edit-formula-btn" onclick="editFormula('materials', 3)">✏️</button>
                     </div>
                     <div class="formula-card">
                         <strong>Hooke's Law:</strong> F = kx
+                        <button class="edit-formula-btn" onclick="editFormula('materials', 4)">✏️</button>
                     </div>
                     <div class="formula-card">
                         <strong>Moment of Inertia:</strong> I = ∫r²dA
+                        <button class="edit-formula-btn" onclick="editFormula('materials', 5)">✏️</button>
                     </div>
                 </div>
 
                 <div id="thermo" class="formula-category">
                     <div class="formula-card">
                         <strong>Ideal Gas Law:</strong> PV = nRT
+                        <button class="edit-formula-btn" onclick="editFormula('thermo', 0)">✏️</button>
                     </div>
                     <div class="formula-card">
                         <strong>1st Law of Thermo:</strong> ΔU = Q - W
+                        <button class="edit-formula-btn" onclick="editFormula('thermo', 1)">✏️</button>
                     </div>
                     <div class="formula-card">
                         <strong>Heat Transfer:</strong> Q = mcΔT
+                        <button class="edit-formula-btn" onclick="editFormula('thermo', 2)">✏️</button>
                     </div>
                     <div class="formula-card">
                         <strong>Thermal Expansion:</strong> ΔL = αL₀ΔT
+                        <button class="edit-formula-btn" onclick="editFormula('thermo', 3)">✏️</button>
                     </div>
                     <div class="formula-card">
                         <strong>Efficiency:</strong> η = W_out/Q_in
+                        <button class="edit-formula-btn" onclick="editFormula('thermo', 4)">✏️</button>
                     </div>
                     <div class="formula-card">
                         <strong>Entropy:</strong> ΔS = Q/T
+                        <button class="edit-formula-btn" onclick="editFormula('thermo', 5)">✏️</button>
                     </div>
+                </div>
+
+                <div id="custom" class="formula-category">
+                    <div class="input-group">
+                        <label>Formula Name</label>
+                        <input type="text" id="customFormulaName" placeholder="e.g., My Custom Formula">
+                    </div>
+                    <div class="input-group">
+                        <label>Formula</label>
+                        <input type="text" id="customFormulaText" placeholder="e.g., F = ma²">
+                    </div>
+                    <button onclick="addCustomFormula()">Add Custom Formula</button>
+                    <div id="customFormulaList" style="margin-top: 20px;"></div>
                 </div>
             </div>
 
@@ -648,11 +758,20 @@
             <div class="card">
                 <div class="card-header">
                     <span class="card-icon">📋</span>
-                    <h2 class="card-title">Quick Notes</h2>
+                    <h2 class="card-title">Notes</h2>
                 </div>
-                <textarea class="notes-area" id="quickNotes" placeholder="Jot down quick notes, ideas, or reminders..."></textarea>
-                <button onclick="saveNotes()" style="margin-top: 10px;">Save Notes</button>
-                <p style="margin-top: 10px; color: #666; font-size: 12px;">Notes are auto-saved locally</p>
+                
+                <div class="input-group">
+                    <label>Note Title</label>
+                    <input type="text" id="noteTitle" placeholder="e.g., Exam Prep">
+                </div>
+                <div class="input-group">
+                    <label>Note Content</label>
+                    <textarea class="notes-area" id="noteContent" placeholder="Write your note here..."></textarea>
+                </div>
+                <button onclick="addNote()">Save Note</button>
+                
+                <div id="notesList" style="margin-top: 20px;"></div>
             </div>
 
             <!-- Useful Links -->
@@ -997,7 +1116,7 @@
                     id: Date.now()
                 });
                 scheduleItems.sort((a, b) => {
-                    const dayOrder = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+                    const dayOrder = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
                     const dayDiff = dayOrder.indexOf(a.day) - dayOrder.indexOf(b.day);
                     if (dayDiff !== 0) return dayDiff;
                     return a.time.localeCompare(b.time);
@@ -1044,34 +1163,264 @@
             `).join('');
         }
 
-        // Quick Notes
-        const notesTextarea = document.getElementById('quickNotes');
-        
+        // Notes System (Multiple Notes)
+        let notes = [];
+
         function loadNotes() {
-            const saved = localStorage.getItem('quickNotes');
-            if (saved !== null) {
-                notesTextarea.value = saved;
-                console.log('✅ Loaded notes');
+            const saved = localStorage.getItem('notes');
+            if (saved) {
+                try {
+                    notes = JSON.parse(saved);
+                    console.log('✅ Loaded notes:', notes.length);
+                    updateNotesList();
+                } catch (e) {
+                    console.error('Error loading notes:', e);
+                    notes = [];
+                }
             }
         }
 
-        // Auto-save notes as user types
-        notesTextarea.addEventListener('input', () => {
-            try {
-                localStorage.setItem('quickNotes', notesTextarea.value);
-            } catch (e) {
-                console.error('Error saving notes:', e);
+        function addNote() {
+            const title = document.getElementById('noteTitle').value;
+            const content = document.getElementById('noteContent').value;
+
+            if (title && content) {
+                notes.unshift({ // unshift adds to beginning
+                    title,
+                    content,
+                    date: new Date().toLocaleString(),
+                    id: Date.now()
+                });
+                saveNotes();
+                updateNotesList();
+                
+                // Clear form
+                document.getElementById('noteTitle').value = '';
+                document.getElementById('noteContent').value = '';
+                console.log('✅ Note added:', title);
+            } else {
+                alert('Please enter both title and content');
             }
-        });
+        }
+
+        function editNote(index) {
+            const note = notes[index];
+            document.getElementById('noteTitle').value = note.title;
+            document.getElementById('noteContent').value = note.content;
+            
+            // Remove the note so user can re-save it
+            notes.splice(index, 1);
+            saveNotes();
+            updateNotesList();
+        }
+
+        function deleteNote(index) {
+            if (confirm('Delete this note?')) {
+                const noteTitle = notes[index].title;
+                notes.splice(index, 1);
+                saveNotes();
+                updateNotesList();
+                console.log('✅ Note deleted:', noteTitle);
+            }
+        }
 
         function saveNotes() {
             try {
-                localStorage.setItem('quickNotes', notesTextarea.value);
-                console.log('✅ Notes saved');
-                alert('Notes saved!');
+                localStorage.setItem('notes', JSON.stringify(notes));
+                console.log('✅ Notes saved to localStorage');
             } catch (e) {
                 console.error('Error saving notes:', e);
                 alert('Failed to save notes. Storage may be full.');
+            }
+        }
+
+        function updateNotesList() {
+            const list = document.getElementById('notesList');
+            if (notes.length === 0) {
+                list.innerHTML = '<p style="color: #999; text-align: center; padding: 20px;">No notes yet. Create your first note above!</p>';
+                return;
+            }
+            
+            list.innerHTML = notes.map((note, index) => `
+                <div class="note-card">
+                    <div class="note-card-header">
+                        <div>
+                            <div class="note-card-title">${note.title}</div>
+                            <div class="note-card-date">${note.date}</div>
+                        </div>
+                    </div>
+                    <div class="note-card-content">${note.content}</div>
+                    <div class="note-actions">
+                        <button onclick="editNote(${index})" style="background: #667eea;">Edit</button>
+                        <button class="delete-btn" onclick="deleteNote(${index})">Delete</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Formula Management
+        let customFormulas = [];
+        
+        // Default formulas structure
+        const defaultFormulas = {
+            electricity: [
+                { name: "Ohm's Law", formula: "V = IR" },
+                { name: "Power", formula: "P = IV = V²/R = I²R" },
+                { name: "Coulomb's Law", formula: "F = k(q₁q₂)/r²" },
+                { name: "Capacitance", formula: "C = Q/V" },
+                { name: "Resistance (series)", formula: "R_total = R₁ + R₂ + R₃" },
+                { name: "Resistance (parallel)", formula: "1/R_total = 1/R₁ + 1/R₂ + 1/R₃" }
+            ],
+            motion: [
+                { name: "Newton's 2nd Law", formula: "F = ma" },
+                { name: "Velocity", formula: "v = v₀ + at" },
+                { name: "Position", formula: "x = x₀ + v₀t + ½at²" },
+                { name: "Momentum", formula: "p = mv" },
+                { name: "Impulse", formula: "J = FΔt = Δp" },
+                { name: "Centripetal Force", formula: "F = mv²/r" },
+                { name: "Angular Velocity", formula: "ω = θ/t" }
+            ],
+            energy: [
+                { name: "Kinetic Energy", formula: "KE = ½mv²" },
+                { name: "Potential Energy", formula: "PE = mgh" },
+                { name: "Work", formula: "W = F·d·cos(θ)" },
+                { name: "Power", formula: "P = W/t = F·v" },
+                { name: "Elastic Potential", formula: "PE = ½kx²" },
+                { name: "Conservation", formula: "KE₁ + PE₁ = KE₂ + PE₂" }
+            ],
+            fluids: [
+                { name: "Bernoulli's Equation", formula: "P + ½ρv² + ρgh = constant" },
+                { name: "Continuity", formula: "A₁v₁ = A₂v₂" },
+                { name: "Pressure", formula: "P = F/A" },
+                { name: "Hydrostatic Pressure", formula: "P = ρgh" },
+                { name: "Buoyancy", formula: "F_b = ρ_fluid·V_displaced·g" },
+                { name: "Flow Rate", formula: "Q = A·v" }
+            ],
+            materials: [
+                { name: "Stress", formula: "σ = F/A" },
+                { name: "Strain", formula: "ε = ΔL/L₀" },
+                { name: "Young's Modulus", formula: "E = σ/ε" },
+                { name: "Shear Stress", formula: "τ = F/A" },
+                { name: "Hooke's Law", formula: "F = kx" },
+                { name: "Moment of Inertia", formula: "I = ∫r²dA" }
+            ],
+            thermo: [
+                { name: "Ideal Gas Law", formula: "PV = nRT" },
+                { name: "1st Law of Thermo", formula: "ΔU = Q - W" },
+                { name: "Heat Transfer", formula: "Q = mcΔT" },
+                { name: "Thermal Expansion", formula: "ΔL = αL₀ΔT" },
+                { name: "Efficiency", formula: "η = W_out/Q_in" },
+                { name: "Entropy", formula: "ΔS = Q/T" }
+            ]
+        };
+
+        function loadCustomFormulas() {
+            const saved = localStorage.getItem('customFormulas');
+            if (saved) {
+                try {
+                    customFormulas = JSON.parse(saved);
+                    console.log('✅ Loaded custom formulas:', customFormulas.length);
+                    updateCustomFormulaList();
+                } catch (e) {
+                    console.error('Error loading custom formulas:', e);
+                    customFormulas = [];
+                }
+            }
+        }
+
+        function addCustomFormula() {
+            const name = document.getElementById('customFormulaName').value;
+            const formula = document.getElementById('customFormulaText').value;
+
+            if (name && formula) {
+                customFormulas.push({
+                    name,
+                    formula,
+                    id: Date.now()
+                });
+                saveCustomFormulas();
+                updateCustomFormulaList();
+                
+                // Clear form
+                document.getElementById('customFormulaName').value = '';
+                document.getElementById('customFormulaText').value = '';
+                console.log('✅ Custom formula added:', name);
+            } else {
+                alert('Please enter both name and formula');
+            }
+        }
+
+        function deleteCustomFormula(index) {
+            if (confirm('Delete this formula?')) {
+                const formulaName = customFormulas[index].name;
+                customFormulas.splice(index, 1);
+                saveCustomFormulas();
+                updateCustomFormulaList();
+                console.log('✅ Custom formula deleted:', formulaName);
+            }
+        }
+
+        function saveCustomFormulas() {
+            try {
+                localStorage.setItem('customFormulas', JSON.stringify(customFormulas));
+                console.log('✅ Custom formulas saved');
+            } catch (e) {
+                console.error('Error saving custom formulas:', e);
+                alert('Failed to save custom formulas.');
+            }
+        }
+
+        function updateCustomFormulaList() {
+            const list = document.getElementById('customFormulaList');
+            if (customFormulas.length === 0) {
+                list.innerHTML = '<p style="color: #999; text-align: center; padding: 20px;">No custom formulas yet. Add your first one above!</p>';
+                return;
+            }
+            
+            list.innerHTML = customFormulas.map((item, index) => `
+                <div class="formula-card">
+                    <strong>${item.name}:</strong> ${item.formula}
+                    <button class="delete-btn" onclick="deleteCustomFormula(${index})" style="float: right; margin-left: 10px;">Delete</button>
+                </div>
+            `).join('');
+        }
+
+        function editFormula(category, index) {
+            const currentFormula = defaultFormulas[category][index];
+            const newFormulaText = prompt(`Edit formula for "${currentFormula.name}":`, currentFormula.formula);
+            
+            if (newFormulaText !== null && newFormulaText.trim() !== '') {
+                defaultFormulas[category][index].formula = newFormulaText.trim();
+                saveEditedFormulas();
+                location.reload(); // Reload to show changes
+                console.log('✅ Formula edited:', currentFormula.name);
+            }
+        }
+
+        function saveEditedFormulas() {
+            try {
+                localStorage.setItem('editedFormulas', JSON.stringify(defaultFormulas));
+                console.log('✅ Edited formulas saved');
+            } catch (e) {
+                console.error('Error saving edited formulas:', e);
+            }
+        }
+
+        function loadEditedFormulas() {
+            const saved = localStorage.getItem('editedFormulas');
+            if (saved) {
+                try {
+                    const edited = JSON.parse(saved);
+                    // Merge edited formulas with defaults
+                    Object.keys(edited).forEach(category => {
+                        if (defaultFormulas[category]) {
+                            defaultFormulas[category] = edited[category];
+                        }
+                    });
+                    console.log('✅ Loaded edited formulas');
+                } catch (e) {
+                    console.error('Error loading edited formulas:', e);
+                }
             }
         }
 
@@ -1109,12 +1458,16 @@
             loadSchedule();
             loadNotes();
             loadTimerStats();
+            loadEditedFormulas();
+            loadCustomFormulas();
             updateTimerDisplay();
             
             console.log('✅ Dashboard fully loaded!');
             console.log('📊 Courses:', courses.length);
             console.log('📝 Assignments:', assignments.length);
             console.log('📅 Schedule items:', scheduleItems.length);
+            console.log('📋 Notes:', notes.length);
+            console.log('🧮 Custom formulas:', customFormulas.length);
         });
     </script>
 </body>
